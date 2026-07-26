@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentina Beauty & Spa — Lima, Perú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:ital@1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f6efe4;
+    --cream-soft:#efe4d3;
+    --espresso:#3d2a20;
+    --cocoa:#6f4b36;
+    --terracotta:#a8663f;
+    --gold:#b78f4f;
+    --gold-light:#dcc38f;
+    --blush:#e7b6b3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--espresso);
+    font-family:'Work Sans',sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  .notice{
+    background:var(--espresso);
+    color:var(--cream-soft);
+    text-align:center;
+    font-size:.78rem;
+    letter-spacing:.04em;
+    padding:8px 16px;
+  }
+
+  /* ---------- Flower divider (signature motif) ---------- */
+  .flower{
+    width:22px;height:22px;flex-shrink:0;
+  }
+  .flower path{fill:var(--blush);}
+  .flower circle{fill:var(--gold);}
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    margin:0 auto;
+  }
+  .divider .line{
+    height:1px;
+    width:60px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:60px 24px;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(183,143,79,.18), transparent 55%),
+      radial-gradient(ellipse at 85% 85%, rgba(168,102,63,.20), transparent 55%),
+      var(--cream);
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(111,75,54,.05) 0 2px, transparent 2px 140px);
+    pointer-events:none;
+  }
+  .eyebrow{
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--cocoa);
+    margin-bottom:22px;
+    opacity:0;
+    animation:riseIn .9s ease forwards;
+    animation-delay:.1s;
+  }
+  .brand-mark{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(2.8rem,8vw,5.6rem);
+    color:var(--espresso);
+    line-height:1.05;
+    opacity:0;
+    animation:riseIn 1s ease forwards;
+    animation-delay:.3s;
+  }
+  .brand-mark span{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-style:normal;
+    font-weight:500;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    font-size:clamp(.95rem,2vw,1.3rem);
+    color:var(--gold);
+    margin-top:10px;
+  }
+  .tagline{
+    margin-top:26px;
+    max-width:480px;
+    font-size:1.02rem;
+    color:var(--cocoa);
+    opacity:0;
+    animation:riseIn 1s ease forwards;
+    animation-delay:.55s;
+  }
+  .cta-row{
+    margin-top:38px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+    opacity:0;
+    animation:riseIn 1s ease forwards;
+    animation-delay:.8s;
+  }
+  .btn{
+    padding:14px 30px;
+    border-radius:2px;
+    font-size:.85rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    transition:transform .25s ease, box-shadow .25s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-solid{
+    background:var(--espresso);
+    color:var(--cream);
+  }
+  .btn-outline{
+    border:1px solid var(--cocoa);
+    color:var(--espresso);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(61,42,32,.18);}
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:90px 24px;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-eyebrow{
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.7rem;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
+  .section-title{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    color:var(--espresso);
+  }
+
+  /* ---------- Services ---------- */
+  .services{
+    background:var(--cream-soft);
+  }
+  .services-grid{
+    max-width:1180px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--gold-light);
+    border:1px solid var(--gold-light);
+  }
+  .service-col{
+    background:var(--cream-soft);
+    padding:34px 26px;
+  }
+  .service-col h3{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:1.18rem;
+    color:var(--terracotta);
+    margin-bottom:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--gold-light);
+  }
+  .service-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    padding:10px 0;
+    font-size:.92rem;
+    border-bottom:1px dashed rgba(111,75,54,.18);
+  }
+  .service-item:last-child{border-bottom:none;}
+  .service-item .name{color:var(--espresso);}
+  .service-item .price{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    color:var(--gold);
+    white-space:nowrap;
+  }
+  @media (max-width:900px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  .note-price{
+    text-align:center;
+    font-size:.78rem;
+    color:var(--cocoa);
+    margin-top:26px;
+    opacity:.85;
+  }
+
+  /* ---------- Sobre nosotras ---------- */
+  .about{
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .about p{color:var(--cocoa);font-size:1.02rem;}
+
+  /* ---------- Visit / contact ---------- */
+  .visit{
+    background:linear-gradient(180deg, var(--espresso), #2a1c14);
+    color:var(--cream-soft);
+  }
+  .visit .section-title{color:var(--cream);}
+  .visit-grid{
+    max-width:900px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .visit-card{
+    padding:10px;
+  }
+  .visit-card h4{
+    font-family:'Cormorant Garamond',serif;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-size:.85rem;
+    color:var(--gold-light);
+    margin-bottom:10px;
+  }
+  .visit-card p{
+    font-size:.95rem;
+    color:var(--cream-soft);
+    opacity:.85;
+  }
+  .placeholder{
+    color:var(--blush);
+    font-style:italic;
+  }
+  @media (max-width:640px){
+    .visit-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:#2a1c14;
+    color:var(--cream-soft);
+    text-align:center;
+    padding:40px 24px;
+    font-size:.78rem;
+    letter-spacing:.04em;
+  }
+  footer .flogo{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:1.3rem;
+    margin-bottom:14px;
+    color:var(--gold-light);
+  }
+  footer .social{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    margin:16px 0;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  footer .social a{opacity:.85;}
+  footer .social a:hover{opacity:1;color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<div class="notice">Vista previa / borrador — para revisar formato y nombre de dominio antes de publicar</div>
+
+<header class="hero">
+  <p class="eyebrow">Belleza &amp; Estética · Lima, Perú</p>
+  <h1 class="brand-mark">Valentina<span>Beauty &amp; Spa</span></h1>
+  <p class="tagline">Tratamientos faciales, corporales y de bienestar pensados para que te sientas tan bien como te ves.</p>
+  <div class="cta-row">
+    <a class="btn btn-solid" href="#servicios">Ver servicios</a>
+    <a class="btn btn-outline" href="#visita">Reservar una cita</a>
+  </div>
+</header>
+
+<div class="divider" style="margin-top:-1px;padding:26px 0;background:var(--cream-soft);">
+  <span class="line"></span>
+  <svg class="flower" viewBox="0 0 24 24"><path d="M12 2c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6Zm0 14c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6ZM2 12c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0Zm14 0c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0Z"/><circle cx="12" cy="12" r="2.4"/></svg>
+  <span class="line"></span>
+</div>
+
+<section class="services" id="servicios">
+  <div class="section-head">
+    <p class="section-eyebrow">Catálogo</p>
+    <h2 class="section-title">Nuestros servicios</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-col">
+      <h3>Rostro</h3>
+      <div class="service-item"><span class="name">Limpieza facial profunda</span><span class="price">S/60</span></div>
+      <div class="service-item"><span class="name">Plasma rico en plaquetas</span><span class="price">S/90</span></div>
+      <div class="service-item"><span class="name">Depilación facial con láser</span><span class="price">S/70</span></div>
+      <div class="service-item"><span class="name">Dermapen + pink glow</span><span class="price">S/190</span></div>
+    </div>
+    <div class="service-col">
+      <h3>Cuerpo &amp; reductores</h3>
+      <div class="service-item"><span class="name">Reductores + aparatología</span><span class="price">S/60</span></div>
+      <div class="service-item"><span class="name">Exfoliación corporal</span><span class="price">S/40</span></div>
+      <div class="service-item"><span class="name">Drenaje linfático</span><span class="price">S/40</span></div>
+      <div class="service-item"><span class="name">Tratamiento para estrías</span><span class="price">S/50</span></div>
+      <div class="service-item"><span class="name">Armonización de glúteos</span><span class="price">S/80</span></div>
+    </div>
+    <div class="service-col">
+      <h3>Spa &amp; bienestar</h3>
+      <div class="service-item"><span class="name">Spa relajante</span><span class="price">S/30</span></div>
+      <div class="service-item"><span class="name">Fisioterapia</span><span class="price">S/40</span></div>
+      <div class="service-item"><span class="name">Tratamiento para acné corporal</span><span class="price">S/70</span></div>
+      <div class="service-item"><span class="name">Reductores brazos y espalda</span><span class="price">S/60</span></div>
+      <div class="service-item"><span class="name">Mesoterapia + quemadores</span><span class="price">S/60</span></div>
+    </div>
+    <div class="service-col">
+      <h3>Depilación &amp; aclarado</h3>
+      <div class="service-item"><span class="name">Depilación corporal</span><span class="price">S/50</span></div>
+      <div class="service-item"><span class="name">Aclarado bikini / axilas / cuello</span><span class="price">S/100</span></div>
+      <div class="service-item"><span class="name">Aplicación de peptonas</span><span class="price">S/100</span></div>
+    </div>
+  </div>
+  <p class="note-price">Precios referenciales en soles (S/). Pueden variar según evaluación previa.</p>
+</section>
+
+<div class="divider" style="padding:26px 0;background:var(--cream-soft);">
+  <span class="line"></span>
+  <svg class="flower" viewBox="0 0 24 24"><path d="M12 2c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6Zm0 14c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6ZM2 12c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0Zm14 0c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0Z"/><circle cx="12" cy="12" r="2.4"/></svg>
+  <span class="line"></span>
+</div>
+
+<section class="about">
+  <p class="section-eyebrow" style="text-align:center;">Sobre nosotras</p>
+  <h2 class="section-title" style="text-align:center;margin-bottom:20px;">Un espacio para cuidarte</h2>
+  <p>En Valentina Beauty &amp; Spa creemos que el cuidado personal es un ritual, no un lujo. Combinamos técnicas faciales y corporales con atención cercana, para que cada visita sea un momento solo para ti.</p>
+</section>
+
+<section class="visit" id="visita">
+  <div class="section-head">
+    <p class="section-eyebrow" style="color:var(--gold-light);">Reserva tu cita</p>
+    <h2 class="section-title">Visítanos</h2>
+  </div>
+  <div class="visit-grid">
+    <div class="visit-card">
+      <h4>WhatsApp</h4>
+      <p><span class="placeholder">[pendiente: número de WhatsApp Business]</span></p>
+    </div>
+    <div class="visit-card">
+      <h4>Ubicación</h4>
+      <p><span class="placeholder">[pendiente: distrito / dirección en Lima]</span></p>
+    </div>
+    <div class="visit-card">
+      <h4>Horario</h4>
+      <p><span class="placeholder">[pendiente: horario de atención]</span></p>
+    </div>
+    <div class="visit-card">
+      <h4>Instagram</h4>
+      <p>@valentinabeautyspa.pe</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">Valentina</div>
+  <div class="social">
+    <a href="https://instagram.com/valentinabeautyspa.pe" target="_blank" rel="noopener">Instagram</a>
+    <a href="#">WhatsApp</a>
+    <a href="#">Facebook</a>
+  </div>
+  <p>© 2026 Valentina Beauty &amp; Spa · Lima, Perú</p>
+</footer>
+
+</body>
+</html>
